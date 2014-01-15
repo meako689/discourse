@@ -1179,21 +1179,21 @@ uk:
       invisible:
         help: "this topic is invisible; it will not be displayed in topic lists, and can only be accessed via a direct link"
 
-    posts: "Posts"
-    posts_long: "there are {{number}} posts in this topic"
-    original_post: "Original Post"
-    views: "Views"
-    replies: "Replies"
-    views_long: "this topic has been viewed {{number}} times"
-    activity: "Activity"
-    likes: "Likes"
-    likes_long: "there are {{number}} likes in this topic"
-    users: "Users"
-    category_title: "Category"
-    history: "History"
-    changed_by: "by {{author}}"
+    posts: "Дописи"
+    posts_long: "{{number}} дописів у темі"
+    original_post: "Перший запис"
+    views: "Перегляди"
+    replies: "Відповіді"
+    views_long: "цю тему переглянули {{number}} разів"
+    activity: "Активність"
+    likes: "Лайки"
+    likes_long: "{{number}} лайків"
+    users: "Люди"
+    category_title: "Категорія"
+    history: "Історія"
+    changed_by: "{{author}}"
 
-    categories_list: "Categories List"
+    categories_list: "Список категорій"
 
     filters:
       latest:
