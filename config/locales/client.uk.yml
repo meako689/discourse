@@ -69,7 +69,7 @@ uk:
           few:   "%{count} р"
           many:  "%{count} р"
           other: "%{count} р"
-        date_year: "D MMM 'YY"
+        date_year: "D MMM YYYY"
       medium:
         x_minutes:
           one:   "%{count} хвилина"
@@ -723,7 +723,7 @@ uk:
       show_links: "show links within this topic"
       toggle_information: "показати/сховати деталі теми"
       read_more_in_category: "Хочете почитати ще? Перегляньте інші теми в {{catLink}} або {{latestLink}}."
-      read_more: "Want to read more? {{catLink}} or {{latestLink}}."
+      read_more: "Хочете ще? {{catLink}} або {{latestLink}}."
 
       # keys ending with _MF use message format, see /spec/components/js_local_helper_spec.rb for samples
       read_more_MF: "There {
@@ -739,11 +739,11 @@ uk:
             =0 {}
             one { {BOTH, select, true{and } false {is } other{}} <a href='/new'>1 new</a> topic}
             other { {BOTH, select, true{and } false {are } other{}} <a href='/new'># new</a> topics}
-        } remaining, or {CATEGORY, select, true {browse other topics in {catLink}} false {{latestLink}} other {}}."
+        } remaining, або {CATEGORY, select, true {browse other topics in {catLink}} false {{latestLink}} other {}}."
 
-      browse_all_categories: Browse all categories
+      browse_all_categories: Перегляньте список категорій
 
-      view_latest_topics: перегляньте останні теми
+      view_latest_topics: останні теми
       suggest_create_topic: Чому б не створити тему?
       read_position_reset: "Your read position has been reset."
       jump_reply_up: перейти до ранішої відповіді
@@ -1207,7 +1207,7 @@ uk:
         help: "теми, які Ви позначили зірочкою"
       read:
         title: "Прочитані"
-        help: "теми, які Ви прочитали, in the order that you last read them"
+        help: "теми, які Ви прочитали, в зворотньому порядку"
       categories:
         title: "Категорії"
         title_in: "Категорія - {{categoryName}}"

@@ -7,13 +7,13 @@
 uk:
   dates:
     short_date_no_year: "D MMM"
-    short_date: "D MMM, YYYY"
-    long_date: "MMMM D, YYYY h:mma"
+    short_date: "D MMM YYYY"
+    long_date: 'DD.MM.YYYY HH:mm'
   time:
     formats:
-      short: "%m-%d-%Y"
-      short_no_year: "%B %-d"
-      date_only: "%b %-d, %Y"
+      short: '%d.%m.%Y'
+      short_no_year: '%d.%m'
+      date_only: '%d.%m.%Y'
 
   title: "Discourse"
   topics: "Topics"
