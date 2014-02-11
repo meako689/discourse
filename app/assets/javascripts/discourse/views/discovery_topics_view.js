@@ -7,14 +7,8 @@
   @namespace Discourse
   @module Discourse
 **/
-Discourse.DiscoveryTopicsView = Discourse.View.extend(Discourse.LoadMore, {
+Discourse.DiscoveryTopicsView = Discourse.View.extend(Discourse.ScrollTop, Discourse.LoadMore, {
   eyelineSelector: '.topic-list-item',
-
-  _scrollTop: function() {
-    Em.run.schedule('afterRender', function() {
-      $(document).scrollTop(0);
-    });
-  }.on('didInsertElement'),
 
   actions: {
     loadMore: function() {
@@ -30,6 +24,10 @@ Discourse.DiscoveryTopicsView = Discourse.View.extend(Discourse.LoadMore, {
       });
     }
   },
+
+  _updateTitle: function() {
+    Discourse.notifyTitle(this.get('controller.topicTrackingState.incomingCount'));
+  }.observes('controller.topicTrackingState.incomingCount'),
 
   // Remember where we were scrolled to
   saveScrollPosition: function() {

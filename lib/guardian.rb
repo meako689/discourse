@@ -8,11 +8,12 @@ class Guardian
   include CategoryGuardian
   include PostGuardain
   include TopicGuardian
-    
+
   class AnonymousUser
     def blank?; true; end
     def admin?; false; end
     def staff?; false; end
+    def moderator?; false; end
     def approved?; false; end
     def secure_category_ids; []; end
     def topic_create_allowed_category_ids; []; end
@@ -42,6 +43,10 @@ class Guardian
 
   def is_staff?
     @user.staff?
+  end
+
+  def is_moderator?
+    @user.moderator?
   end
 
   def is_developer?
@@ -128,6 +133,10 @@ class Guardian
     user && is_staff?
   end
 
+  def can_change_primary_group?(user)
+    user && is_staff?
+  end
+
   def can_change_trust_level?(user)
     user && is_staff?
   end
@@ -172,7 +181,7 @@ class Guardian
   end
 
   def can_see_private_messages?(user_id)
-    is_staff? || (authenticated? && @user.id == user_id)
+    is_admin? || (authenticated? && @user.id == user_id)
   end
 
   def can_edit_user?(user)
