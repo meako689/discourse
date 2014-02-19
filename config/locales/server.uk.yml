@@ -589,6 +589,9 @@ uk:
     bottom:
       title: "Нижній колонтитул сторінок"
       description: "HTML-код, що буде додаватися внизу кожної сторінки"
+    tos_signup_form_message:
+      title: "Signup Form: Terms of Service Message"
+      description: "The message that will appear beside a checkbox on the signup form if the tos_accept_required site setting is enabled."
 
   site_settings:
     default_locale: "Мова за замовчуванням для цього екземпляра Discourse (Код ISO 639-1)"
@@ -798,7 +801,7 @@ uk:
     category_colors: "Список шістнадцяткових значень кольорів, дозволених для категорій та розділених вертикальною рискою (|)"
 
     max_image_size_kb: "Максимальний розмір зображень, які ми дозволяємо користувачам завантажити, в КБ - налаштуйте обмеження також у nginx (client_max_body_size) / apache або проксі."
-    max_attachment_size_kb: ""Максимальний розмір файлів, які ми дозволяємо користувачам завантажити, в КБ - налаштуйте обмеження також у nginx (client_max_body_size) / apache або проксі."
+    max_attachment_size_kb: "Максимальний розмір файлів, які ми дозволяємо користувачам завантажити, в КБ - налаштуйте обмеження також у nginx (client_max_body_size) / apache або проксі."
     authorized_extensions: "Список розширень файлів, дозволених до завантаження, розділених вертикальною рискою (|)"
     max_similar_results: "How many similar topics to show a user while they are composing a new topic"
 
