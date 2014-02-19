@@ -147,7 +147,6 @@ nav.post-controls {
     border: none;
     margin-left: 3px;
     transition: all linear 0.15s;
-    outline: none;
          &:hover {
           background: lighten($primary_light, 20%);
           color: $primary_medium;
@@ -473,12 +472,8 @@ iframe {
     }
 
     a.user-group {
-      margin: 4px 0 0 0;
-      padding: 0px;
       color: $primary_light;
-      font-size: 80%;
       width: 100%;
-      line-height: 13px;
     }
 
     h3 a {
@@ -487,9 +482,16 @@ iframe {
 
     }
 
+    h3.full-name {
+      display: inline;
+      font-weight: normal;
+      font-size: 12px;
+      margin-top: 2px;
+      a {color: $primary;}
 
-
+    }
   }
+
   h3 { display: block; }
 
 }
@@ -618,7 +620,7 @@ position: relative;
   h3 {
     font-size: 13px;
     margin-top: 5px;
-    word-wrap: break-word;
+    overflow: hidden;
     line-height: 1.2em;
   }
 }
@@ -800,7 +802,6 @@ button.show-replies {
 
 .btn-group .dropdown-toggle:active,
 .btn-group.open .dropdown-toggle {
-  outline: 0;
 }
 
 .dropdown {
@@ -811,7 +812,6 @@ button.show-replies {
 }
 .dropdown-toggle:active,
 .open .dropdown-toggle {
-  outline: 0;
 }
 .caret {
   display: inline-block;

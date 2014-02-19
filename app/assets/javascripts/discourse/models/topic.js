@@ -313,7 +313,27 @@ Discourse.Topic.reopenClass({
     WATCHING: 3,
     TRACKING: 2,
     REGULAR: 1,
-    MUTE: 0
+    MUTED: 0
+  },
+
+  createActionSummary: function(result) {
+    if (result.actions_summary) {
+      var lookup = Em.Object.create();
+      result.actions_summary = result.actions_summary.map(function(a) {
+        a.post = result;
+        a.actionType = Discourse.Site.current().postActionTypeById(a.id);
+        var actionSummary = Discourse.ActionSummary.create(a);
+        lookup.set(a.actionType.get('name_key'), actionSummary);
+        return actionSummary;
+      });
+      result.set('actionByName', lookup);
+    }
+  },
+
+  create: function() {
+    var result = this._super.apply(this, arguments);
+    this.createActionSummary(result);
+    return result;
   },
 
   /**

@@ -348,6 +348,21 @@ describe Category do
     end
   end
 
+  describe "#url" do
+    it "builds a url for normal categories" do
+      category = Fabricate(:category, name: "cats")
+      expect(category.url).to eq "/category/cats"
+    end
+
+    describe "for subcategories" do
+      it "includes the parent category" do
+        parent_category = Fabricate(:category, name: "parent")
+        subcategory = Fabricate(:category, name: "child",
+                                parent_category_id: parent_category.id)
+        expect(subcategory.url).to eq "/category/parent/child"
+      end
+    end
+  end
 
   describe "parent categories" do
     let(:user) { Fabricate(:user) }
@@ -370,6 +385,21 @@ describe Category do
       nested_sub_category = Fabricate.build(:category, parent_category_id: sub_category.id, user: user)
       nested_sub_category.should_not be_valid
 
+    end
+
+    describe ".query_parent_category" do
+      it "should return the parent category id given a parent slug" do
+        parent_category.name = "Amazing Category"
+        parent_category.id.should == Category.query_parent_category(parent_category.slug)
+      end
+    end
+
+    describe ".query_category" do
+      it "should return the category" do
+        category = Fabricate(:category, name: "Amazing Category", parent_category_id: parent_category.id, user: user)
+        parent_category.name = "Amazing Parent Category"
+        category.should == Category.query_category(category.slug, parent_category.id)
+      end
     end
 
   end
