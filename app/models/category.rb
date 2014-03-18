@@ -28,11 +28,9 @@ class Category < ActiveRecord::Base
   validate :parent_category_validator
 
   before_validation :ensure_slug
-  after_save :invalidate_site_cache
   before_save :apply_permissions
   after_create :create_category_definition
   after_create :publish_categories_list
-  after_destroy :invalidate_site_cache
   after_destroy :publish_categories_list
 
   has_one :category_search_data
@@ -221,12 +219,6 @@ SQL
     end
   end
 
-  # Categories are cached in the site json, so the caches need to be
-  # invalidated whenever the category changes.
-  def invalidate_site_cache
-    Site.invalidate_cache
-  end
-
   def publish_categories_list
     MessageBus.publish('/categories', {categories: ActiveModel::ArraySerializer.new(Category.latest).as_json})
   end
@@ -341,6 +333,10 @@ SQL
   def self.query_category(slug, parent_category_id)
     self.where(slug: slug, parent_category_id: parent_category_id).includes(:featured_users).first ||
     self.where(id: slug.to_i, parent_category_id: parent_category_id).includes(:featured_users).first
+  end
+
+  def self.find_by_email(email)
+    self.where(email_in: Email.downcase(email)).first
   end
 
   def has_children?

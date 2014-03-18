@@ -113,7 +113,9 @@ gem 'email_reply_parser-discourse', require: 'email_reply_parser'
 
 # note: for image_optim to correctly work you need
 # sudo apt-get install -y advancecomp gifsicle jpegoptim libjpeg-progs optipng pngcrush
-gem 'image_optim'
+#
+# Sam: held back, getting weird errors in latest
+gem 'image_optim', '0.9.1'
 # note: for image_sorcery to correctly work you need
 # sudo apt-get install -y imagemagick
 gem 'image_sorcery'
@@ -137,7 +139,7 @@ gem 'rest-client'
 gem 'rinku'
 gem 'sanitize'
 gem 'sass'
-gem 'sidekiq', '2.15.1'
+gem 'sidekiq'
 gem 'sidekiq-failures'
 gem 'sinatra', require: nil
 gem 'slim'  # required for sidekiq-web
@@ -200,7 +202,7 @@ gem 'lru_redux'
 
 # IMPORTANT: mini profiler monkey patches, so it better be required last
 #  If you want to amend mini profiler to do the monkey patches in the railstie
-#  we are open to it. by deferring require to the initializer we can configure disourse installs without it
+#  we are open to it. by deferring require to the initializer we can configure discourse installs without it
 
 gem 'flamegraph', require: false
 gem 'rack-mini-profiler', require: false

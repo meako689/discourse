@@ -14,7 +14,22 @@ describe PollPlugin::Poll do
     expect(poll.is_poll?).to be_false
   end
 
+  it "allows the prefix translation to contain regular expressions" do
+    topic.title = "Poll : This might be a poll"
+    topic.save
+    expect(PollPlugin::Poll.new(post).is_poll?).to be_false
+    I18n.expects(:t).with('poll.prefix').returns("Poll\\s?:")
+    expect(PollPlugin::Poll.new(post).is_poll?).to be_true
+  end
+
   it "should get options correctly" do
+    expect(poll.options).to eq(["Chitoge", "Onodera"])
+  end
+
+  it "should fall back to using the first list if [poll] markup is not present" do
+    topic = create_topic(title: "This is not a poll topic")
+    post = create_post(topic: topic, raw: "Pick one.\n\n* Chitoge\n* Onodera")
+    poll = PollPlugin::Poll.new(post)
     expect(poll.options).to eq(["Chitoge", "Onodera"])
   end
 
